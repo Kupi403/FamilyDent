@@ -1,4 +1,5 @@
 @use 'colors.scss' as c;
+@use 'mixins.scss' as *;
 
 * {
 	padding: 0;
@@ -34,6 +35,10 @@ a {
 
 .section-padding {
 	padding: 2em;
+}
+
+.section {
+	margin-top: 3em;
 }
 
 // NAV
@@ -277,14 +282,22 @@ a {
 	z-index: 1;
 }
 
+.image-shadow {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background: c.$hero-gradient;
+	z-index: 0;
+}
+
 // HEADER
 
 .header {
 	position: relative;
 	height: 80vh;
-	background-image: url('../../dist/img/hero-images/header-small.jpg');
-	background-size: cover;
-	background-position: center;
+	@include heroImages('../../dist/img/hero-images/header-small.jpg');
 	z-index: 0;
 	&__box {
 		position: relative;
@@ -292,13 +305,6 @@ a {
 		align-items: center;
 		justify-content: center;
 		height: 100%;
-	}
-	&__shadow {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		background: c.$hero-gradient;
-		z-index: 0;
 	}
 
 	&__text {
@@ -427,33 +433,132 @@ a {
 	}
 
 	&__info {
-
 		p {
 			margin: 1em 0;
 			font-size: 1.6rem;
-		}	
+		}
 	}
 
-	&__more{
+	&__more {
 		position: relative;
 		font-size: 1.8rem;
 		font-weight: 700;
 		color: c.$dark;
 
-		i{
+		i {
 			margin-top: 2em;
 			color: c.$main;
 			font-size: 1.6rem;
-			transition: transform .3s;
+			transition: transform 0.3s;
 		}
 
-		&:hover{
-			i{
+		&:hover {
+			i {
 				transform: translateX(5px);
 			}
 		}
 	}
 }
+
+.offer {
+	background-color: c.$white;
+	&__box {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	&__item {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		padding: 1em;
+		margin: 1em;
+		height: 300px;
+		width: 300px;
+		background-size: cover;
+		background-position: center;
+		border-radius: 8px;
+		overflow: hidden;
+
+		
+
+
+		&:hover{
+
+			img{
+				transform: scale(1.1);
+			}
+
+			i{
+				transform: translateX(.3em);
+			}
+		}
+
+		h3,
+		p {
+			color: c.$pure-white;
+			text-transform: uppercase;
+		}
+
+		h3 {
+			position: relative;
+			padding-bottom: 0.5em;
+			font-size: 1.8rem;
+		}
+
+		p {
+			font-size: 1.6rem;
+			padding-top: 0.5em;
+			z-index: 0;
+
+			i {
+				font-size: 1.4rem;
+				transition: transform .3s;
+			}
+		}
+
+		
+		
+	}
+
+	&__shadow{
+		background-image: c.$card-gradient;
+	}
+}
+
+.scalable-image{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform .3s;
+}
+
+.hero-section{
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 40vh;
+	@include heroImages('../../dist/img/hero-images/hero-smile-small.jpg');
+	
+	p{
+		padding: .5em;
+		margin: 1em;
+		border: 3px solid c.$main;
+		color: c.$pure-white;
+		text-align: center;
+		font-size: 2rem;
+		text-transform: uppercase;
+		border-radius: 8px;
+		z-index: 10;
+	}
+}
+
 
 .hide {
 	display: none;
@@ -531,7 +636,12 @@ a {
 		}
 	}
 
-	
+	.hero-section{
+		p{
+			padding: 1.5em;
+			font-size: 2.4rem;
+		}
+	}
 }
 
 @media (min-width: 992px) {
@@ -566,7 +676,7 @@ a {
 		}
 
 		&__buttons {
-			button {
+			a {
 				width: 50%;
 				font-size: 2rem;
 				margin-top: 2em;
@@ -579,21 +689,27 @@ a {
 			flex-direction: row;
 		}
 
-		&__info{
+		&__info {
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
 			margin: 0 2em;
-			p{
-				&:first-child{
+			p {
+				&:first-child {
 					margin-top: 0;
 				}
 			}
 		}
 
-
-		&__image{
+		&__image {
 			max-width: 50%;
+		}
+	}
+
+	.hero-section{
+		background-image: url('../../dist/img/hero-images/hero-smile-big.jpg');
+		p{
+			font-size: 3.2rem;
 		}
 	}
 }

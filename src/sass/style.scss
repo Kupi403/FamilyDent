@@ -482,17 +482,13 @@ a {
 		border-radius: 8px;
 		overflow: hidden;
 
-		
-
-
-		&:hover{
-
-			img{
+		&:hover {
+			img {
 				transform: scale(1.1);
 			}
 
-			i{
-				transform: translateX(.3em);
+			i {
+				transform: translateX(0.3em);
 			}
 		}
 
@@ -515,39 +511,36 @@ a {
 
 			i {
 				font-size: 1.4rem;
-				transition: transform .3s;
+				transition: transform 0.3s;
 			}
 		}
-
-		
-		
 	}
 
-	&__shadow{
+	&__shadow {
 		background-image: c.$card-gradient;
 	}
 }
 
-.scalable-image{
+.scalable-image {
 	position: absolute;
 	top: 0;
 	right: 0;
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	transition: transform .3s;
+	transition: transform 0.3s;
 }
 
-.hero-section{
+.hero-section {
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 40vh;
 	@include heroImages('../../dist/img/hero-images/hero-smile-small.jpg');
-	
-	p{
-		padding: .5em;
+
+	p {
+		padding: 0.5em;
 		margin: 1em;
 		border: 3px solid c.$main;
 		color: c.$pure-white;
@@ -559,6 +552,109 @@ a {
 	}
 }
 
+.reviews {
+	&__boxes {
+		position: relative;
+		display: flex;
+    height: auto;
+    flex-direction: row;
+
+		&::before, &::after {
+			position: absolute;
+			top: 0;
+			height: 100%;
+			width: 0;
+			content: '';
+			background: rgb(255, 255, 255);
+			z-index: 100;
+		}
+
+		&::before{
+			left: 0;
+			background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255,255,255,0) 80%);
+		}
+
+		&::after{
+			right: 0;
+			background: linear-gradient(-90deg, rgba(255,255,255,1) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255,255,255,0) 80%);
+		}
+	}
+
+	&__box {
+		display: flex;
+		flex-direction: column;
+		padding: 2em;
+		margin: 2em;
+		height: auto;
+		width: 30%;
+		border-radius: 8px;
+		box-shadow: 3px 3px 10px #2e2e2e2e;
+	}
+	&__box-head {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 2em;
+
+		img {
+			width: 80px;
+			height: 80px;
+			object-fit: cover;
+			border-radius: 50%;
+		}
+
+		i {
+			font-size: 36px;
+			color: c.$main;
+		}
+	}
+
+	&__box-body {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: calc(100% - 100px);
+		font-size: 1.4rem;
+
+		p {
+			margin: 1em 0;
+		}
+		strong {
+			color: c.$main;
+		}
+	}
+}
+
+.slick-track{
+	display: flex;
+}
+
+.slick-arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 100px;
+	height: 100px;
+	background-color: transparent;
+	border: none;
+	border-radius: 50%;
+	z-index: 101;
+	opacity: .3;
+	transition: opacity .3s;
+
+&:hover{
+	opacity: 1;
+}
+
+	i{
+		font-size: 6rem;
+		color: c.$main;
+	}
+}
+
+.slick-next {
+	right: 0;
+}
 
 .hide {
 	display: none;
@@ -610,6 +706,13 @@ a {
 			font-size: 2.2rem;
 		}
 	}
+
+	.reviews {
+		&__box-body {
+			font-size: 1.6rem;
+		}
+	}
+
 }
 
 @media (min-width: 768px) {
@@ -636,10 +739,19 @@ a {
 		}
 	}
 
-	.hero-section{
-		p{
+	.hero-section {
+		p {
 			padding: 1.5em;
 			font-size: 2.4rem;
+		}
+	}
+	.reviews{
+		&__boxes {
+			position: relative;
+	
+			&::before, &::after {
+				width: 200px;
+			}
 		}
 	}
 }
@@ -706,9 +818,9 @@ a {
 		}
 	}
 
-	.hero-section{
+	.hero-section {
 		background-image: url('../../dist/img/hero-images/hero-smile-big.jpg');
-		p{
+		p {
 			font-size: 3.2rem;
 		}
 	}

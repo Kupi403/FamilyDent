@@ -54,6 +54,8 @@ const closeMobileNav = () => {
 	shadow.classList.remove('shadow-active')
 }
 
+
+
 burgerBtn.addEventListener('click', handleNav)
 dropdownMobileBtn.addEventListener('click', handleOfferListMobile)
 dropdownDesktopBtn.addEventListener('click', handleOfferListDesktop)

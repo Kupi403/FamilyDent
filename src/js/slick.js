@@ -10,14 +10,6 @@ $(document).ready(function () {
         nextArrow:"<button type='button' class='slick-next'><i class='fa-solid fa-chevron-right'></i></button>",
 		responsive: [
 			{
-				breakpoint: 768,
-				settings: {
-                    arrows:true,
-					slidesToShow: 2,
-					slidesToScroll: 1,
-				},
-			},
-			{
 				breakpoint: 992,
 				settings: {
                     arrows:true,
